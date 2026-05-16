@@ -1,16 +1,73 @@
 <!DOCTYPE html>
-<html>
-<head lang="uk">
+<html lang="uk">
+<head>
     <meta charset="UTF-8">
-    <title>My Page</title>
-
-
-    <link rel="stylesheet" type="text/css" href="main.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy List</title>
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
-	<span class="product-item">
-		Apple
-		<span class="amount">4</span>
-	</span>
+
+    <div class="container">
+        <main class="card shopping-list">
+            <header class="input-section">
+                <input type="text" placeholder="Назва товару">
+                <button class="btn-add" data-tooltip="Додати товар">Додати</button>
+            </header>
+
+            <article class="product-row row-bought">
+                <span class="product-item">Помідори</span>
+                <span class="number-only">2</span>
+                <div class="actions">
+                    <button class="btn-status" data-tooltip="Не куплено">Не куплено</button>
+                </div>
+            </article>  
+
+            <article class="product-row">
+                <span class="product-item">Печиво</span>
+                <div class="number-btn">
+                    <button class="btn-plus-minus" data-tooltip="Менше">−</button>
+                    <span class="number">2</span>
+                    <button class="btn-plus-minus" data-tooltip="Більше">+</button>
+                </div>
+                <div class="actions">
+                    <button class="btn-status" data-tooltip="Куплено">Куплено</button>
+                    <button class="btn-remove" data-tooltip="Видалити">×</button>
+                </div>
+            </article>
+
+            <article class="product-row">
+                <input type="text" value="Сир" class="product-input" aria-label="Назва товару">
+                <div class="number-btn">
+                    <button class="btn-plus-minus" disabled data-tooltip="Менше (недоступно)">−</button>
+                    <span class="number">1</span>
+                    <button class="btn-plus-minus" data-tooltip="Більше">+</button>
+                </div>
+                <div class="actions">
+                    <button class="btn-status" data-tooltip="Куплено">Куплено</button>
+                    <button class="btn-remove" data-tooltip="Видалити">×</button>
+                </div>
+            </article>
+        </main>
+
+        <aside class="card summary-card">
+            <section>
+                <h2>Залишилося</h2>
+                <span class="tag">Печиво <span class="amount">2</span></span>
+                <span class="tag">Сир <span class="amount">1</span></span>
+            </section>
+            
+            <section>
+                <h2>Куплено</h2>
+                <span class="tag strike">Помідори <span class="amount">2</span></span>
+            </section>
+        </aside>
+    </div>
+
+    <footer class="badge" aria-label="Author">
+        <span class="badge-title">Buy List</span>
+        <span class="badge-author">Хомініч Катерина</span>
+    </footer>
+
 </body>
 </html>
