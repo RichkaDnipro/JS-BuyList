@@ -52,7 +52,7 @@ body {
 
 .product-row { 
     display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    grid-template-columns: 220px auto 200px;
     align-items: center; 
     padding: 15px 20px; 
     border-top: 1px solid #edf0f2; 
@@ -62,16 +62,31 @@ body {
     font-size: 16px;
     color: #333;
     justify-self: start;
+    cursor: pointer;
+    padding: 6px 4px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    display: inline-block;
+    max-width: 200px; /*for input*/
+    overflow: hidden;
+    text-overflow: ellipsis; /*blabla...*/
+    white-space: nowrap;
+}
+
+.product-item:hover {
+    background-color: #f1f3f4;
 }
 
 .product-input {
+    font-family: Arial, sans-serif;
     font-size: 16px;
     color: #333;
     border: 1px solid #4285f4; 
     border-radius: 4px;
-    padding: 6px 12px;
-    width: 140px; 
+    padding: 5px 10px;
+    width: 160px; 
     outline: none;
+    background: #fff;
     justify-self: start;
     box-shadow: 0 0 4px rgba(66, 133, 244, 0.2);
 }
@@ -79,12 +94,15 @@ body {
 .row-bought .product-item {
     text-decoration: line-through;
     color: #888;
+    cursor: default;
 }
+.row-bought .product-item:hover { background-color: transparent; }
 
 .number-btn, .number-only {
     grid-column: 2;
     display: flex;
     align-items: center;
+    justify-self: center;
 }
 
 .number {
@@ -123,10 +141,10 @@ body {
     box-shadow: 0 2px 5px rgba(0,0,0,0.15);
 }
 
-.number-btn button:first-child { background: #db4437; }
-.number-btn button:last-child { background: #4caf50; }
+.btn-minus-color { background: #db4437; }
+.btn-plus-color { background: #4caf50; }
 
-.number-btn button:disabled {
+.btn-plus-minus:disabled {
     background-color: #f5b7b1 !important;
     opacity: 0.7;
     cursor: not-allowed;
@@ -138,6 +156,7 @@ body {
     display: flex;
     justify-content: flex-end;
     gap: 8px;
+    justify-self: end;
 }
 
 .btn-status {
@@ -150,6 +169,7 @@ body {
     font-size: 14px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
+.btn-status:hover { background: #e8eaed; }
 
 .btn-remove {
     background: #db4437;
@@ -162,12 +182,15 @@ body {
     font-size: 16px;
     box-shadow: 0 1px 3px rgba(219, 68, 55, 0.3);
 }
+.btn-remove:hover { background: #c53929; }
+
+
+
 
 .summary-card section {
     padding: 15px 20px;
     border-bottom: 1px solid #edf0f2;
 }
-
 .summary-card section:last-child { border-bottom: none; }
 
 .summary-card h2 {
@@ -189,6 +212,7 @@ body {
     font-size: 14px;
     font-weight: normal;
     margin-right: 5px;
+    margin-bottom: 5px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
 
@@ -232,13 +256,12 @@ body {
     opacity: 0; 
     margin-top: 15px; 
     transition: opacity 0.3s; 
-    font-size: 12px;
+    font-size: 12px; 
+    white-space: nowrap;
 }
 
-.badge:hover { height: 85px; background-color: #5d00b3; }
+.badge:hover { height: 85px; background-color: #2100b3; }
 .badge:hover .badge-author { opacity: 1; }
-
-
 
 @media print {
     .badge {
@@ -254,30 +277,28 @@ body {
 }
 
 [data-tooltip] { position: relative; }
-
 [data-tooltip]::after {
     content: attr(data-tooltip);
     position: absolute;
     bottom: 0;
-    left: 50%;
-    transform: translateX(-50%) scale(0);
+    left: 50%;      /*лівий край тексту посередині*/
+    transform: translateX(-50%) scale(0); /*центр тексту посередині*/
     background: #4B0082;
     color: white;
     padding: 6px 10px;
     border-radius: 5px;
     font-size: 12px;
     white-space: nowrap;
-    transition: all 0.25s ease;
+    transition: all 0.5s ease;
     visibility: hidden;
     opacity: 0;
     z-index: 1000;
 }
-
 [data-tooltip]:hover::after {
     visibility: visible;
     opacity: 1;
     transform: translateX(-50%) scale(1);
-    bottom: 135%;
+    bottom: 120%;
 }
 
 @media (max-width: 650px) {
